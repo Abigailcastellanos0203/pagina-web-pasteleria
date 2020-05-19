@@ -1,44 +1,106 @@
 
 <html>
     <head>
-        <title> SABORES </title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width">
-        <link rel="stylesheet" href="css/maquillaje.css">
-         <script type="text/javascript" src="jquery/jquery.min.js"></script>
-        <script type="text/javascript" src="jquery/jquery.widget.min.js"></script>
-        <script type="text/javascript" src="metro/metro-dropdown.js"></script>
-
-    
+        <title> Sabores </title>
+        <link rel="stylesheet" type="text/css" href="css/etiquetas.css">
+        <link rel="stylesheet" type="text/css" href="css/estructura.css">
+         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="UTF8">
     </head>
-    <body>            
-        <div id="Descripcion">
+    
+    <body>
+        <div id="principal">
+            <header>
+                <a href="#" title="Inicio"><img src="images/logom.png" alt="Logotipo"></a>
+            </header>
             
-             <img class="place-left margin20" src="img/Tortas-Varias-min.png" alt="" height="300" width="300">              
-<br><center><h2><strong> SABORES </strong></h2></center><br>
-
-
-		<br><br>
-              <p><h4> 
-                  Nuestra tienda ofrece una variedad de sabores.
-                                <br> Tradicionales y especiales. 
-                                <br> En los tradicionales se agrupan los pasteles de Chocolate, Fresa, Nuez, Naranja, Vainilla, Durazno, Tres leches, entre otros
-                                <br> En los especiales se agrupan los pasteles de Mocca, Tiramisú, Queso crema con zarzamora, entre otros más.
-                                <br>
-                                <br> El sabor de un pastel es como estar en las nubes, es como ver las flores brotar en la primavera; ese esquisito sabor
-                                <br> que hace soñar despierta y decir... ¡ESTO ES DELICIOSO!
-
- </h4>
-
-           
-      
-        
-        </div>
+            <nav>
+                <ul>
+                   <li><a href="index.html" title="Inicio">INICIO</a></li>
+                    <li><a href="Sabores.html" title="Sabores">SABORES</a></li>
+                    <li><a href="Precio.html" title="Precio">PRECIO</a></li>
+                    <li><a href="Horario.html" title="Horario">HORARIOS</a></li>
+                    <li><a href="quienes-somos.html" title="Quienes-somos">QUIENES SOMOS</a></li>
+                    <li><a href="Ubicacion.html" title="Ubicación">UBICACIÓN</a></li>   
+                </ul>
+                <form>
+                    <input id="buscador" name="txtBuscar" type="search" placeholder="Buscar aquí..." autofocus ></input>
+                    <input type="submit" class="boton peque aceptar" value="buscar" onclick="registraBusqueda()"></input>
+                </form>
+                
+            </nav>
+            <section>
+                <article class="bloques">
+                    <header>
+                        <hgroup>
+                          <h1>SABORES</h1>  
+                        </hgroup>
+                        
+                    </header>
+                        
+                    <p> Nuestra tienda ofrece una variedad de sabores, en lo personal los pasteles que realiza este negocio son de productos de buena calidad y muy ricos.</p>
+                        <p> Tradicionales y especiales. </p>
+<p> En los tradicionales se agrupan los pasteles de Chocolate, Fresa, Nuez, Naranja, Vainilla, Durazno, Tres leches, entre otros
+En los especiales se agrupan los pasteles de Mocca, Tiramisú, Queso crema con zarzamora, entre otros más.  </p>
+<p> El sabor de un pastel es como estar en las nubes, es como ver las flores brotar en la primavera; ese esquisito sabor
+    que hace soñar despierta y decir... ¡ESTO ES DELICIOSO! </p>
+                         <a href="#" title="Ver más" class="boton">Ver más</a>
+                     
+                </article>
+                
+             
+            </section>
+            <footer>
+                <article>
+                    <section class="elementoPie">
+                        
+                    </section>
+                    <section class="elementoPie" id="busquedasRecientes">
+                        <h2>Contáctanos a: 951-198-91-44</h2>
+                    </section>
+                   
+                </article> 
+            </footer>
        
+        
+        <script type="text/javascript">        
+            function cargaContextoCanvas(idCanvas){
+               var elemento = document.getElementById(idCanvas);
+               if(elemento && elemento.getContext){
+                  var contexto = elemento.getContext('2d');
+                  if(contexto){
+                    return contexto;
+                  }
+               }
+               return FALSE;
+            }
             
-      
-        
-        
+            
+            function registraBusqueda(){
+                var busqueda = "<h3 color='#fff'>" + document.getElementById('buscador').value + "</h3>";
+                localStorage.setItem("ultimaBusqueda", busqueda);
+            }
+                
+                function mostrarBusqueda (){
+                    if(localStorage.getItem("ultimaBusqueda") != undefined){
+                        var contenedor = document.getElementById('busquedasRecientes');
+                        contenedor.innerHTML +=  localStorage.getItem("ultimaBusqueda");
+                    }  
+                }
+                
+            window.onload = function(){
+                    var ctx = cargaContextoCanvas('lienzo');
+                    if(ctx){
+                        var img = new Image(); 
+                        img.src = 'images/HTML5logo.svg';
+                        img.onload = function(){
+                        ctx.drawImage(img, 40, 10);
+                        }
+                    }
+                mostrarBusqueda();
+                }
+        </script>
+         </div>
     </body>
 </html>
 

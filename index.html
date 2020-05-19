@@ -1,47 +1,118 @@
+<!DOCTYPE html>
+<!--totaledit-->
 <html>
     <head>
- 
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="css/maquillaje.css">
+        <title> Pastelería </title>
+        <link rel="stylesheet" type="text/css" href="css/etiquetas.css">
+        <link rel="stylesheet" type="text/css" href="css/estructura.css">
          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="UTF8">
     </head>
+    
     <body>
-        <head>
-        
-        <meta name="viewport" content="user-scalable=no,initial-scale=1,maximum-scale=1,
-              minimum-scale=1,width=device-width, height=device-height">
-        
-
-    </head>
-
-
-        <header>
-                    <img class="place-left margin20" src="img/logotipo.png" alt="Home" height="139" width="149" > 
-                    
-                 <iframe src="titulo.html" width="75%" height="80%" align="center" 
-                         scrolling="no">                 
-                </iframe>
+        <div id="principal">
+            <header>
+                <a href="#" title="Inicio"><img src="images/logom.png" alt="Logotipo"></a>
+            </header>
+            
+            <nav>
+                <ul>
+                    <li><a href="index.html" title="Inicio">INICIO</a></li>
+                    <li><a href="Sabores.html" title="Sabores">SABORES</a></li>
+                    <li><a href="Precio.html" title="Precio">PRECIO</a></li>
+                    <li><a href="Horario.html" title="Horario">HORARIOS</a></li>
+                    <li><a href="quienes-somos.html" title="Quienes-somos">QUIENES SOMOS</a></li>
+                    <li><a href="Ubicacion.html" title="Ubicación">UBICACIÓN</a></li>    
+                </ul>
                 
-                      </header>
-        
-         <nav>
-             
-              <iframe src="menu_la.html" name="inicio" width="100%" height="100%"
-                      align="center" scrolling="no">    
-            </iframe>
-        </nav>
-         
-       <section> 
-       <iframe name="iframe2" target="cuadro"  width="100%" height="100%"   
-               align="center" scrolling="yes">  
-       </iframe>
-        </section>
-         <footer class="row bg-grayLight no-margin">
-                        <p class="text-center fg-white ">Contactanos a numero: 951-198-91-44</p>
+                <form>
+                    <input id="buscador" name="txtBuscar" type="search" placeholder="Buscar aquí..." autofocus ></input>
+                    <input type="submit" class="boton peque aceptar" value="buscar" onclick="registraBusqueda()"></input>
+                </form>
+                
+            </nav>
+            
+            <aside>
+                <div id="slides">
+                    <img src="images/carr.jpg" title="Slide1">
+                    <img src="images/pisos.jpg" title="Slide2">
+                 
+                </div>
+            </aside>
+            <section>
+                <article class="bloques">
+                    <header>
+                        <hgroup>
+                          <h1>Misión</h1>  
+                        </hgroup>
                         
-                    </footer>
+                    </header>
+                        
+                        <p>Somos un negocio cuya misión es ofrecer productos de pasteleria de la más alta calidad, con un excelente sabor y a un precio accesible. </p>
+                        <p>Establecer un liderazgo con la colaboración y creatividad de nuestro talento  humano, utilizando las mejores materias primas del mercado para satisfacer a nuestros clientes.</p>
+                        <a href="#" title="Ver más" class="boton">Ver más</a>
+                </article>
+                
+                <article class="bloques">
+                        <h2> Visión </h2>
+                        <p>Ser una empresa líder en el negocio de pastelería reconocida en la zona de valles centrales. Destacarnos por la calidad y sabor de nuestros productos, atención y servicio al cliente.  </p>
+                        <p>Utilizando los más altos estándares de calidad y tecnología de vanguardia en nuestros procesos productivos.</p>
+                        <a href="#" title="Ver más" class="boton">Ver más</a>
+                </article>
+                
+                
+            </section>
+            <footer>
+                <article>
+                    <section class="elementoPie">
+                        
+                    </section>
+                    <section class="elementoPie" id="busquedasRecientes">
+                        <h2> Contáctanos a: 951-198-91-44</h2>
+                    </section>
+                    
                    
+                </article> 
+            </footer>
+       
+        
+        <script type="text/javascript">        
+            function cargaContextoCanvas(idCanvas){
+               var elemento = document.getElementById(idCanvas);
+               if(elemento && elemento.getContext){
+                  var contexto = elemento.getContext('2d');
+                  if(contexto){
+                    return contexto;
+                  }
+               }
+               return FALSE;
+            }
+            
+            
+            function registraBusqueda(){
+                var busqueda = "<h3 color='#fff'>" + document.getElementById('buscador').value + "</h3>";
+                localStorage.setItem("ultimaBusqueda", busqueda);
+            }
+                
+                function mostrarBusqueda (){
+                    if(localStorage.getItem("ultimaBusqueda") != undefined){
+                        var contenedor = document.getElementById('busquedasRecientes');
+                        contenedor.innerHTML +=  localStorage.getItem("ultimaBusqueda");
+                    }  
+                }
+                
+            window.onload = function(){
+                    var ctx = cargaContextoCanvas('lienzo');
+                    if(ctx){
+                        var img = new Image(); 
+                        img.src = 'images/HTML5logo.svg';
+                        img.onload = function(){
+                        ctx.drawImage(img, 40, 10);
+                        }
+                    }
+                mostrarBusqueda();
+                }
+        </script>
+         </div>
     </body>
 </html>

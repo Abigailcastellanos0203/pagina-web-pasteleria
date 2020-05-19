@@ -1,43 +1,105 @@
-
 <html>
     <head>
-        <title> SABORES </title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width">
-        <link rel="stylesheet" href="css/maquillaje.css">
-         <script type="text/javascript" src="jquery/jquery.min.js"></script>
-        <script type="text/javascript" src="jquery/jquery.widget.min.js"></script>
-        <script type="text/javascript" src="metro/metro-dropdown.js"></script>
-
-    
+        <title> Precio </title>
+        <link rel="stylesheet" type="text/css" href="css/etiquetas.css">
+        <link rel="stylesheet" type="text/css" href="css/estructura.css">
+         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="UTF8">
     </head>
-    <body>            
-        <div id="Descripcion">
+    
+    <body>
+        <div id="principal">
+            <header>
+                <a href="#" title="Inicio"><img src="images/logom.png" alt="Logotipo"></a>
+            </header>
             
-             <img class="place-left margin20" src="img/pisos.jpg" alt="" height="300" width="300">              
-<br><center><h2><strong> PRECIOS </strong></h2></center><br>
-
-
-		<br><br>
-                <p><h4>
-                 El costo de cada pastel va dependiendo de su tamaño, en el local la empleada se encarga de mostrarle un album con algunas fotos
-                 que son las creaciones de los pasteleros, de igual manera importa el tipo de sabor y diseño, ya que cuentan con material especial 
-                 para su elaboración dependiendo de la elección del cliente.
-                 <br> 
-                                           
-
- </h4>
-
+            <nav>
+                <ul>
+                    <li><a href="index.html" title="Inicio">INICIO</a></li>
+                    <li><a href="Sabores.html" title="Sabores">SABORES</a></li>
+                    <li><a href="Precio.html" title="Precio">PRECIO</a></li>
+                    <li><a href="Horario.html" title="Horario">HORARIOS</a></li>
+                    <li><a href="quienes-somos.html" title="Quienes-somos">QUIENES SOMOS</a></li>
+                    <li><a href="Ubicacion.html" title="Ubicación">UBICACIÓN</a></li>    
+                </ul>
+                <form>
+                    <input id="buscador" name="txtBuscar" type="search" placeholder="Buscar aquí..." autofocus ></input>
+                    <input type="submit" class="boton peque aceptar" value="buscar" onclick="registraBusqueda()"></input>
+                </form>
+                
+            </nav>
            
+            <section>
+                <article class="bloques">
+                    <header>
+                        <hgroup>
+                          <h1>PRECIOS</h1>  
+                        </hgroup>
+                        
+                    </header>
+                        
+                    <p> El costo de cada pastel va dependiendo de su tamaño ya que realizamos pasteles para distintas ocaciones como son, quince años, bautizos, bodas,confirmaciones, entre otras más.
+                        <p> En el local la empleada se encarga de mostrarle un album con algunas fotos
+                 que son las creaciones de los pasteleros, de igual manera importa el tipo de sabor y diseño, ya que cuentan con material especial 
+                 para su elaboración dependiendo de la elección del cliente. </p>
+                        <p> Al pasar a nuestro negocio no pierda la oportunidad de comprar una rebanada de pastel para endulzar su paladar con tan delicioso olor y sabor </p>
+                       
+                     
+                </article>
+                
+               
+            </section>
+            <footer>
+                <article>
+                    <section class="elementoPie">
+                        
+                    </section>
+                    <section class="elementoPie" id="busquedasRecientes">
+                        <h2>Contáctanos a: 951-198-91-44</h2>
+                    </section>
+                    
+                </article> 
+            </footer>
       
         
-        </div>
-       
+        <script type="text/javascript">        
+            function cargaContextoCanvas(idCanvas){
+               var elemento = document.getElementById(idCanvas);
+               if(elemento && elemento.getContext){
+                  var contexto = elemento.getContext('2d');
+                  if(contexto){
+                    return contexto;
+                  }
+               }
+               return FALSE;
+            }
             
-      
-        
-        
+            
+            function registraBusqueda(){
+                var busqueda = "<h3 color='#fff'>" + document.getElementById('buscador').value + "</h3>";
+                localStorage.setItem("ultimaBusqueda", busqueda);
+            }
+                
+                function mostrarBusqueda (){
+                    if(localStorage.getItem("ultimaBusqueda") != undefined){
+                        var contenedor = document.getElementById('busquedasRecientes');
+                        contenedor.innerHTML +=  localStorage.getItem("ultimaBusqueda");
+                    }  
+                }
+                
+            window.onload = function(){
+                    var ctx = cargaContextoCanvas('lienzo');
+                    if(ctx){
+                        var img = new Image(); 
+                        img.src = 'images/HTML5logo.svg';
+                        img.onload = function(){
+                        ctx.drawImage(img, 40, 10);
+                        }
+                    }
+                mostrarBusqueda();
+                }
+        </script>
+          </div>
     </body>
 </html>
-
 
